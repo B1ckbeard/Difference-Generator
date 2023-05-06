@@ -2,7 +2,7 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "description": "[![Actions Status](https://github.com/B1ckbeard/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/B1ckbeard/frontend-project-46/actions)",
-  "main": "index.js",
+  "main": "gendiff.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,8 +15,16 @@
   "bugs": {
     "url": "https://github.com/B1ckbeard/frontend-project-46/issues"
   },
+  "bin": {
+    "gendiff": "bin/gendiff.js"
+  },
   "homepage": "https://github.com/B1ckbeard/frontend-project-46#readme",
+  "type": "module",
   "dependencies": {
-    "commander": "^10.0.1"
+    "commander": "^10.0.1",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "eslint": "^8.40.0"
   }
 }
