@@ -1,8 +1,7 @@
 import genDiff from '../src/index.js';
 import path from 'node:path';
 import * as fs from 'node:fs';
-import test from 'node:test';
-import { expect } from 'expect';
+import { expect } from '@jest/globals';
 
 // Считываем файлы
 const data1 = fs.readFileSync(path.resolve('../frontend-project-46','__fixtures__','file1.json'), 'utf-8');
