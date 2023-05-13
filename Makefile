@@ -1,6 +1,6 @@
 install:
 	npm ci
-say-hello:
-	echo "Hello, World!"
 lint:
 	npx eslint
+test:
+	node __tests__/genDiff.test.js
