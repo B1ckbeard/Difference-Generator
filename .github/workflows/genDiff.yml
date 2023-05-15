@@ -11,4 +11,10 @@ jobs:
       - name: Run jest
         run: 
           make test
-      
+      - name: Test coverage codeclimate
+        uses: paambaati/codeclimate-action@v4.0.0
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATE_COVERAGE }}
+        with:
+          coverageCommand: make test-coverage
+          debug: true
