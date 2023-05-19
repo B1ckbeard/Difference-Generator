@@ -1,16 +1,27 @@
 import * as fs from 'node:fs';
 import _ from 'lodash';
-
 import * as process from 'process';
 import path from 'node:path';
+import yaml from 'js-yaml';
+
+//функция для определения формата файла(JSON/yaml)
+export const fileFormatParse = (filePath) => {
+  const fileFormat = path.extname(filePath).replace('.', '');
+  switch (fileFormat) {
+    case 'json':
+      return JSON.parse(fs.readFileSync(path.resolve(process.cwd(),'../frontend-project-46','__fixtures__',filePath), 'utf-8'));
+    case 'yaml':
+    case 'yml':
+      return yaml.load(fs.readFileSync(path.resolve(process.cwd(),'../frontend-project-46','__fixtures__',filePath), 'utf-8'));
+    default:
+      throw new Error(`Unknown format: ${fileFormat}`);
+  }
+};
+
 
 const genDiff = (filepath1, filepath2) => {
-  //функция для определения формата файла(JSON/yaml)
-  // const fileFormat = (file) => {return}
-
-  //console.log("Current working directory: ", process.cwd());
-  const data1 = JSON.parse(fs.readFileSync(path.resolve(process.cwd(),'../frontend-project-46','__fixtures__',filepath1), 'utf-8'));
-  const data2 = JSON.parse(fs.readFileSync(path.resolve(process.cwd(),'../frontend-project-46','__fixtures__',filepath2), 'utf-8'));
+  const data1 = fileFormatParse(filepath1);
+  const data2 = fileFormatParse(filepath2);;
 
   const sortedKeys = _.union(_.keys(data1), _.keys(data2)).sort();
   
