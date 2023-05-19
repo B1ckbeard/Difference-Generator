@@ -5,4 +5,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: make test
+      - name: npm install
+        run: 
+          npm install
+      - name: Run jest
+        run: 
+          make test
+      - name: Test coverage codeclimate
+        uses: paambaati/codeclimate-action@v4.0.0
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATE_COVERAGE }}
+        with:
+          coverageCommand: make test-coverage
+          debug: true
