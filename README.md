@@ -4,6 +4,10 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/c77c578388564fc31e04/maintainability)](https://codeclimate.com/github/B1ckbeard/frontend-project-46/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/c77c578388564fc31e04/test_coverage)](https://codeclimate.com/github/B1ckbeard/frontend-project-46/test_coverage)
 ### Asciinema:
+Plain formatter:
+
+[![asciicast](https://asciinema.org/a/TRO1s3hoXbbOANKJ2yE8vz2RH.svg)](https://asciinema.org/a/TRO1s3hoXbbOANKJ2yE8vz2RH)
+
 Stylish formatter:
 
 [![asciicast](https://asciinema.org/a/D6XOc9CAm5xH2nB3pQ8JP1dGq.svg)](https://asciinema.org/a/D6XOc9CAm5xH2nB3pQ8JP1dGq)
