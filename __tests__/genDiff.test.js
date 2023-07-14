@@ -1,5 +1,12 @@
 import genDiff from '../src/index.js';
+import path from 'path';
 import { expect } from '@jest/globals';
+
+const getFixturePath = (filename) => path.join('__fixtures__/', filename);
+const jsonPath1 = getFixturePath('file1.json');
+const jsonPath2 = getFixturePath('file2.json');
+const yamlPath1 = getFixturePath('file1.yaml');
+const ymlPath2 = getFixturePath('file2.yml');
 
 const stylishResult = `{
     common: {
@@ -59,12 +66,13 @@ Property 'group2' was removed
 Property 'group3' was added with value: [complex value]`;
 
 test('genDiff - stylish', () => {
-    expect(genDiff('__fixtures__/file1.json', '__fixtures__/file2.json', 'stylish')).toBe(stylishResult);
-    expect(genDiff('__fixtures__/file1.yaml', '__fixtures__/file2.yml', 'stylish')).toBe(stylishResult);
+
+    expect(genDiff(jsonPath1, jsonPath2, 'stylish')).toBe(stylishResult);
+    expect(genDiff(yamlPath1, ymlPath2, 'stylish')).toBe(stylishResult);
 });
 
 test('genDiff - plain', () => {
-  expect(genDiff('__fixtures__/file1.json', '__fixtures__/file2.json', 'plain')).toBe(plainResult);
-  expect(genDiff('__fixtures__/file1.yaml', '__fixtures__/file2.yml', 'plain')).toBe(plainResult);
+  expect(genDiff(jsonPath1, jsonPath2, 'plain')).toBe(plainResult);
+  expect(genDiff(yamlPath1, ymlPath2, 'plain')).toBe(plainResult);
 });
 
