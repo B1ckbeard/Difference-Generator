@@ -1,10 +1,10 @@
 import _ from 'lodash';
 
-const spaces_count = 4;
+const spacesCount = 4;
 
 const getIndent = (depth) => {
   if (depth < 1) return '';
-  return ' '.repeat(spaces_count * depth - 2);
+  return ' '.repeat(spacesCount * depth - 2);
 };
 
 const stringify = (data, depth) => {
@@ -25,10 +25,10 @@ const stylishDiff = (diff, depth = 1) => {
       case 'deleted':
         return `${getIndent(depth)}- ${node.key}: ${stringify(node.value, depth)}`;
       case 'nested':
-        const inserted = stylishDiff(node.children, depth + 1);
-        return `${getIndent(depth)}  ${node.key}: {\n${inserted}\n${getIndent(depth)}  }`;
+        const output = stylishDiff(node.children, depth + 1);
+        return `${getIndent(depth)}  ${node.key}: {\n${output}\n${getIndent(depth)}  }`;
       case 'changed':
-      return `${getIndent(depth)}- ${node.key}: ${stringify(node.oldValue, depth)}\n${getIndent(depth)}+ ${node.key}: ${stringify(node.newValue, depth)}`;
+        return `${getIndent(depth)}- ${node.key}: ${stringify(node.oldValue, depth)}\n${getIndent(depth)}+ ${node.key}: ${stringify(node.newValue, depth)}`;
       case 'unchanged':
         return `${getIndent(depth)}  ${node.key}: ${stringify(node.value, depth)}`;
       default:

@@ -1,6 +1,6 @@
-import genDiff from '../src/index.js';
-import path from 'path';
 import { expect } from '@jest/globals';
+import path from 'path';
+import genDiff from '../src/index.js';
 
 const getFixturePath = (filename) => path.join('__fixtures__/', filename);
 const jsonPath1 = getFixturePath('file1.json');
@@ -180,12 +180,11 @@ const jsonResult = `[
     },
     "type": "added"
   }
-]`
+]`;
 
 test('genDiff - stylish', () => {
-
-    expect(genDiff(jsonPath1, jsonPath2, 'stylish')).toBe(stylishResult);
-    expect(genDiff(yamlPath1, ymlPath2, 'stylish')).toBe(stylishResult);
+  expect(genDiff(jsonPath1, jsonPath2, 'stylish')).toBe(stylishResult);
+  expect(genDiff(yamlPath1, ymlPath2, 'stylish')).toBe(stylishResult);
 });
 
 test('genDiff - plain', () => {
@@ -197,4 +196,3 @@ test('genDiff - json', () => {
   expect(genDiff(jsonPath1, jsonPath2, 'json')).toBe(jsonResult);
   expect(genDiff(yamlPath1, ymlPath2, 'json')).toBe(jsonResult);
 });
-
