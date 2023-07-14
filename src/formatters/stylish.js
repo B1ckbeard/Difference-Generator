@@ -17,7 +17,7 @@ const stringify = (data, depth) => {
   return `{\n${output.join('\n')}\n${getIndent(depth)}  }`;
 };
 
-const formatDiff = (diff, depth = 1) => {
+const stylishDiff = (diff, depth = 1) => {
   const diffLines = diff.map((node) => {
     switch (node.type) {
       case 'added':
@@ -25,7 +25,7 @@ const formatDiff = (diff, depth = 1) => {
       case 'deleted':
         return `${getIndent(depth)}- ${node.key}: ${stringify(node.value, depth)}`;
       case 'nested':
-        const inserted = formatDiff(node.children, depth + 1);
+        const inserted = stylishDiff(node.children, depth + 1);
         return `${getIndent(depth)}  ${node.key}: {\n${inserted}\n${getIndent(depth)}  }`;
       case 'changed':
       return `${getIndent(depth)}- ${node.key}: ${stringify(node.oldValue, depth)}\n${getIndent(depth)}+ ${node.key}: ${stringify(node.newValue, depth)}`;
@@ -35,7 +35,8 @@ const formatDiff = (diff, depth = 1) => {
         throw new Error((`Unknown node's type: ${node.type}`));
     }
   });
+
   return diffLines.join('\n');
 };
 
-export default formatDiff;
+export default stylishDiff;
