@@ -25,8 +25,7 @@ const stylishDiff = (diff, depth = 1) => {
       case 'deleted':
         return `${getIndent(depth)}- ${node.key}: ${stringify(node.value, depth)}`;
       case 'nested':
-        const output = stylishDiff(node.children, depth + 1);
-        return `${getIndent(depth)}  ${node.key}: {\n${output}\n${getIndent(depth)}  }`;
+        return `${getIndent(depth)}  ${node.key}: {\n${stylishDiff(node.children, depth + 1)}\n${getIndent(depth)}  }`;
       case 'changed':
         return `${getIndent(depth)}- ${node.key}: ${stringify(node.oldValue, depth)}\n${getIndent(depth)}+ ${node.key}: ${stringify(node.newValue, depth)}`;
       case 'unchanged':
