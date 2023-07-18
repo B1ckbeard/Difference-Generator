@@ -15,8 +15,8 @@ const getPath = (path, key) => [...path, key];
 const plainDiff = (diff, path = []) => {
   const diffLines = diff.map((
     {
-      type, key, value, children, oldValue, newValue
-    }
+      type, key, value, children, oldValue, newValue,
+    },
   ) => {
     switch (type) {
       case 'added':
