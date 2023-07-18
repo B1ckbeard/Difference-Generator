@@ -3,10 +3,10 @@ import yaml from 'js-yaml';
 const parse = (data) => {
   try {
     return JSON.parse(data);
-  } catch (error) {
+  } catch (jsonError) {
     try {
       return yaml.load(data);
-    } catch (error) {
+    } catch (yamlError) {
       throw new Error('Unable to parse data');
     }
   }
