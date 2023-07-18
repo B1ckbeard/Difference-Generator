@@ -5,9 +5,8 @@ import parse from './parsers.js';
 import buildDiff from './buildDiff.js';
 import selectFormat from './formatters/index.js';
 
-const buildPath = (filePath) => path.resolve(process.cwd(), filePath);
-const getFileFormat = (filePath) => path.extname(filePath).replace('.', '');
-const getData = (filePath) => parse(fs.readFileSync(filePath, 'utf-8'), getFileFormat(filePath));
+const buildPath = (filePath) => fs.readFileSync(path.resolve(process.cwd(), filePath), 'utf8');
+const getData = (filePath) => parse(filePath);
 
 const genDiff = (filepath1, filepath2, formatName = 'stylish') => {
   const data1 = getData(buildPath(filepath1));

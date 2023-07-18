@@ -18,20 +18,20 @@ const stringify = (data, depth) => {
 };
 
 const stylishDiff = (diff, depth = 1) => {
-  const diffLines = diff.map((node) => {
-    switch (node.type) {
+  const diffLines = diff.map(({ type, key, value, children, oldValue, newValue }) => {
+    switch (type) {
       case 'added':
-        return `${getIndent(depth)}+ ${node.key}: ${stringify(node.value, depth)}`;
+        return `${getIndent(depth)}+ ${key}: ${stringify(value, depth)}`;
       case 'deleted':
-        return `${getIndent(depth)}- ${node.key}: ${stringify(node.value, depth)}`;
+        return `${getIndent(depth)}- ${key}: ${stringify(value, depth)}`;
       case 'nested':
-        return `${getIndent(depth)}  ${node.key}: {\n${stylishDiff(node.children, depth + 1)}\n${getIndent(depth)}  }`;
+        return `${getIndent(depth)}  ${key}: {\n${stylishDiff(children, depth + 1)}\n${getIndent(depth)}  }`;
       case 'changed':
-        return `${getIndent(depth)}- ${node.key}: ${stringify(node.oldValue, depth)}\n${getIndent(depth)}+ ${node.key}: ${stringify(node.newValue, depth)}`;
+        return `${getIndent(depth)}- ${key}: ${stringify(oldValue, depth)}\n${getIndent(depth)}+ ${key}: ${stringify(newValue, depth)}`;
       case 'unchanged':
-        return `${getIndent(depth)}  ${node.key}: ${stringify(node.value, depth)}`;
+        return `${getIndent(depth)}  ${key}: ${stringify(value, depth)}`;
       default:
-        throw new Error((`Unknown node's type: ${node.type}`));
+        throw new Error((`Unknown node's type: ${type}`));
     }
   });
 

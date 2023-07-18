@@ -1,7 +1,7 @@
 {
   "name": "@hexlet/code",
   "version": "1.0.0",
-  "description": "[![Actions Status](https://github.com/B1ckbeard/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/B1ckbeard/frontend-project-46/actions)",
+  "description": "GenDiff - project [![Actions Status](https://github.com/B1ckbeard/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/B1ckbeard/frontend-project-46/actions)",
   "main": "src/index.js",
   "scripts": {
     "test": "NODE_OPTIONS=--experimental-vm-modules jest"
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/B1ckbeard/frontend-project-46.git"
   },
-  "author": "",
+  "author": "Dmitry Evsin - https://github.com/B1ckbeard",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/B1ckbeard/frontend-project-46/issues"

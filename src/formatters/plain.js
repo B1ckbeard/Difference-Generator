@@ -13,16 +13,16 @@ const stringify = (value) => {
 const getPath = (path, key) => [...path, key];
 
 const plainDiff = (diff, path = []) => {
-  const diffLines = diff.map((node) => {
-    switch (node.type) {
+  const diffLines = diff.map(({ type, key, value, children, oldValue, newValue }) => {
+    switch (type) {
       case 'added':
-        return `Property '${getPath(path, node.key).join('.')}' was added with value: ${stringify(node.value)}`;
+        return `Property '${getPath(path, key).join('.')}' was added with value: ${stringify(value)}`;
       case 'deleted':
-        return `Property '${getPath(path, node.key).join('.')}' was removed`;
+        return `Property '${getPath(path, key).join('.')}' was removed`;
       case 'nested':
-        return plainDiff(node.children, getPath(path, node.key));
+        return plainDiff(children, getPath(path, key));
       case 'changed':
-        return `Property '${getPath(path, node.key).join('.')}' was updated. From ${stringify(node.oldValue)} to ${stringify(node.newValue)}`;
+        return `Property '${getPath(path, key).join('.')}' was updated. From ${stringify(oldValue)} to ${stringify(newValue)}`;
       default:
         return null;
     }
