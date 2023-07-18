@@ -18,7 +18,11 @@ const stringify = (data, depth) => {
 };
 
 const stylishDiff = (diff, depth = 1) => {
-  const diffLines = diff.map(({ type, key, value, children, oldValue, newValue }) => {
+  const diffLines = diff.map((
+    {
+      type, key, value, children, oldValue, newValue,
+    },
+  ) => {
     switch (type) {
       case 'added':
         return `${getIndent(depth)}+ ${key}: ${stringify(value, depth)}`;
@@ -34,7 +38,6 @@ const stylishDiff = (diff, depth = 1) => {
         throw new Error((`Unknown node's type: ${type}`));
     }
   });
-
   return diffLines.join('\n');
 };
 
