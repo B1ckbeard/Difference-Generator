@@ -10,17 +10,22 @@ const stylishResult = readFixture('stylishResult.txt');
 const plainResult = readFixture('plainResult.txt');
 const jsonResult = readFixture('jsonResult.txt');
 
+const fileJson1 = getFixturePath('file1.json');
+const fileJson2 = getFixturePath('file2.json');
+const fileYaml1 = getFixturePath('file1.yaml');
+const fileYaml2 = getFixturePath('file2.yml');
+
 test('genDiff - stylish', () => {
-  expect(genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'stylish')).toBe(stylishResult);
-  expect(genDiff(getFixturePath('file1.yaml'), getFixturePath('file2.yml'), 'stylish')).toBe(stylishResult);
+  expect(genDiff(fileJson1, fileJson2, 'stylish')).toBe(stylishResult);
+  expect(genDiff(fileYaml1, fileYaml2, 'stylish')).toBe(stylishResult);
 });
 
 test('genDiff - plain', () => {
-  expect(genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'plain')).toBe(plainResult);
-  expect(genDiff(getFixturePath('file1.yaml'), getFixturePath('file2.yml'), 'plain')).toBe(plainResult);
+  expect(genDiff(fileJson1, fileJson2, 'plain')).toBe(plainResult);
+  expect(genDiff(fileYaml1, fileYaml2, 'plain')).toBe(plainResult);
 });
 
 test('genDiff - json', () => {
-  expect(genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'json')).toBe(jsonResult);
-  expect(genDiff(getFixturePath('file1.yaml'), getFixturePath('file2.yml'), 'json')).toBe(jsonResult);
+  expect(genDiff(fileJson1, fileJson2, 'json')).toBe(jsonResult);
+  expect(genDiff(fileYaml1, fileYaml2, 'json')).toBe(jsonResult);
 });
