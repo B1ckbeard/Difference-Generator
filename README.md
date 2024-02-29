@@ -1,3 +1,11 @@
+## Вычислитель отличий
+Консольную утилита, определяющая различия между двумя конфигурационными файлами формата ‘json’ и/ или ’yml’, ‘yaml’.\
+Реализовано:\
+• работа с вложенными структурами и файловой структурой,\
+• парсинг и форматирование данных в json и yaml,\
+• генерация отчета в разных форматах.\
+Стек технологий: JavaScript, NodeJS, Webpack, cli, FS, Commander.js, GitHub Actions, Jest, ESLint, Lodash.
+
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/B1ckbeard/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/B1ckbeard/frontend-project-46/actions)
 ### Codeclimate:
